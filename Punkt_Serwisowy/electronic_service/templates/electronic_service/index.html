@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TrolIT</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'electronic_service/index_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+<div class="top_div">
+    <div class="logo_img">
+        <a href="{% url 'electronic_service:index' %}" title="Main page">
+            <img src="{% static 'resources/logo_white.png' %}">
+        </a>
+        <div style="margin-left: 30px">
+            TrollIT
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="user_info_col">
+        Hi {{ user.username }}!<br>
+        <a href="{% url 'logout' %}">Log Out</a>
+        <a href="{% url 'electronic_service:profile' %}">My account</a>
+    </div>
+
+    {% else %}
+    <div class="user_info_col">
+        You are not logged in<br>
+
+        <a href="{% url 'login' %}">Log In </a>
+        or
+        <a href="{% url 'account:signup' %}"> Signup</a>
+    </div>
+    {% endif %}
+
+
+</div>
+
+<div class="banner_image">
+    <div class="a123">
+        REPAIR AND SERVICE OF ELECTRICAL AND ELECTRONIC EQUIPMENT
+    </div>
+</div>
+
+<div class="color_scheme_1" style="margin-top: -70px;">
+    <strong>Our specialized staff will take care of your equipment using the appropriate tools</strong>
+</div>
+
+<div class="color_scheme_1 employee_div_1">
+    <div>
+        <img src="{% static 'resources/komp.png' %}">
+    </div>
+    <div>
+        We provide <strong>post-warranty</strong> service<br>
+    </div>
+</div>
+
+<div class="color_scheme_1 employee_div_2">
+    <div>
+        We only use <strong>original</strong> repair parts
+    </div>
+    <div>
+        <img src="{% static 'resources/komp2.png' %}">
+    </div>
+
+</div>
+
+<div class="color_scheme_1">
+
+    <button onclick="darkModeToggle()">Dark mode</button><br>
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed tortor commodo, accumsan eros et, euismod odio.
+    Sed sed hendrerit velit, ut ultrices elit. Cras arcu eros, ornare ut convallis in, rhoncus sed libero. Cras
+    scelerisque nunc ac nisi porttitor blandit. Donec dictum sodales viverra. Sed lacinia nibh non urna aliquam pretium.
+    Praesent rutrum metus eros, vitae iaculis massa pellentesque eget. Sed ultricies leo id nisl fringilla, ac
+    vestibulum sem dignissim. Duis non bibendum urna.
+
+</div>
+<div class="color_scheme_1">
+    <div>
+        <a href="{% url 'electronic_service:make_request' %}" style="color: white; background-color: rgb(25, 27, 179); padding: 3px">Make a request</a>
+    </div>
+</div>
+<script>
+        function darkModeToggle() {
+            const collection = document.getElementsByClassName("color_scheme_1");
+            for (let i = 0; i < collection.length; i++) {
+                collection[i].classList.toggle("dark-mode_color_scheme_1");
+            }
+            const top_div = document.getElementsByClassName('top_div');
+            for (let i = 0; i < top_div.length; i++) {
+                top_div[i].classList.toggle("dark-mode_top_div")
+            }
+            var body_BG = document.querySelector('body')
+            body_BG.classList.toggle('dark-mode_body')
+            const banner = document.getElementsByClassName('banner_image');
+            for (let i = 0; i < banner.length; i++) {
+                banner[i].classList.toggle("dark-mode_banner_image")
+            }
+            const e_pic1 = document.getElementsByClassName("employee_div_1")
+            for (let i=0; i<e_pic1.length; i++){
+                e_pic1[i].classList.toggle("dark-mode_employee_div")
+            }
+            const e_pic2 = document.getElementsByClassName("employee_div_2")
+            for (let i=0; i<e_pic2.length; i++){
+                e_pic2[i].classList.toggle("dark-mode_employee_div")
+            }
+        }
+    </script>
+</body>
+</html>

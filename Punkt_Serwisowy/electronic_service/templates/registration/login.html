@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in to TrollIT</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h2>Log In</h2>
+<form method="post">
+    {% csrf_token %}
+    {% if messages %}
+        {% for message in messages %}
+            {{ message }} or <a href="{% url 'account:signup' %}" style="color: white; background-color: rgb(25, 27, 179); padding: 3px">signup now!</a>
+        {% endfor %}
+
+    {% endif %}
+    {{ form.as_p }}
+    <button type="submit" style="width: auto; display: inline-block">
+        Log In
+    </button>
+    <a href="{% url 'password_reset' %}"
+       style="font-size: 32px; background-color: rgb(25, 27, 179); color: white; border: none;padding: 5px">Forgot
+        password?</a>
+
+</form>
+{% endblock %}
+</body>
+</html>

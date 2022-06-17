@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add your faulty device</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'electronic_service/blank_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="top_div">
+        <div class="logo_img">
+            <a href="{% url 'electronic_service:index' %}" title="Main page">
+                <img src="{% static 'resources/logo_white.png' %}">
+            </a>
+            <div style="margin-left: 30px">
+                TrollIT
+            </div>
+        </div>
+    </div>
+
+    <div class="color_scheme_1" style="margin-top: 110px">
+        <strong>Step II:</strong>
+        <div>
+            Enter your hardware data
+        </div>
+        <form action="{% url 'electronic_service:add_request_hardware' new_request.id %}" method="post" >
+        {% csrf_token %}
+        <fieldset>
+            {% if error_message %}<p>{{ error_message }}</p>{% endif %}
+                <div class="request_data_row">Device brand:</div>
+                <input type="text" name="F_brand" required ><br>
+                <div class="request_data_row">Device model:</div>
+                <input type="text" name="F_model" required ><br>
+                <div class="request_data_row">Device serial number:</div>
+                <input type="text" name="F_serial_number" required ><br>
+                <div class="request_data_row">What is wrong with the device?</div>
+                <input type="text" name="F_fault_description" required ><br>
+
+        </fieldset>
+
+            <button type="submit" name="Continue" style="font-size: 25px">Continue</button>
+            <button type="submit" name="That is all" style="font-size: 25px">That_is_all</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

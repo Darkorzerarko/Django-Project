@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up to TrollIT</title>
+    {% extends "base.html" %}
+    {% load static %}
+</head>
+<body>
+
+    {% block content %}
+    Congratulations Your account has been successfully created<br>
+    <a href="{% url 'login' %}">Login now!</a>
+    {% endblock %}
+
+</body>
+</html>
