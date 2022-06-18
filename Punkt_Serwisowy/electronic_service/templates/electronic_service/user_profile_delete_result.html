@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{user_client.login}} delete page</title>
+    <meta HTTP-EQUIV="REFRESH" content="5; url={% url 'home' %}">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'electronic_service/user_profile_delete_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top_div">
+    <div class="logo_img">
+        <a href="{% url 'electronic_service:index' %}" title="Main page">
+            <img src="{% static 'resources/logo_white.png' %}">
+        </a>
+        <div style="margin-left: 30px">
+            TrollIT
+        </div>
+    </div>
+</div>
+<div class="color_scheme_1" style="margin-top: calc(50px + 9vh); text-align: center">
+    Your account was successfully deleted<br>
+    We hope you will come back to uss later<br>
+    You will be redirected to main page after 5 secounds
+</div>
+</body>
+</html>

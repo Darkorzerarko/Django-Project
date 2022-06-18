@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{user_client.login}} delete page</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'electronic_service/user_profile_delete_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top_div">
+    <div class="logo_img">
+        <a href="{% url 'electronic_service:index' %}" title="Main page">
+            <img src="{% static 'resources/logo_white.png' %}">
+        </a>
+        <div style="margin-left: 30px">
+            TrollIT
+        </div>
+    </div>
+</div>
+<div class="color_scheme_1" style="margin-top: calc(50px + 9vh); text-align: center">
+    {% if not services_list %}
+        Are you sure you want to delete your account?<br>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap">
+            <div class="link_div">
+            <a href="{% url 'electronic_service:profile_delete_result' %}">Yes delete my account</a>
+        </div>
+        <div class="link_div">
+            <a href="{% url 'electronic_service:profile' %}">No take me back</a>
+        </div>
+        </div>
+
+    {% else %}
+        You have unfinished service request, you can not delete your account!
+    {% endif %}
+
+</div>
+</body>
+</html>

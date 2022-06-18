@@ -3,6 +3,7 @@ from django.shortcuts import render, get_list_or_404, redirect
 from .models import *
 from datetime import datetime
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 # OLD VERSION NOT RECOMMEND TO USE IN FUTURE PROJECTS:
 # def index(request):
@@ -89,6 +90,26 @@ def profile_edit_result(request):
             'user_client': curent_client,
         })
 
+def profile_delete(request):
+    username = request.user.username
+    try:
+        user_logged_in = client.objects.get(login=username)
+        service_request_list = service_request.objects.filter(client_id=user_logged_in)
+        return render(request, 'electronic_service/user_profile_delete.html', {'user_client': user_logged_in, 'services_list': service_request_list})
+    except(client.DoesNotExist):
+        return HttpResponse("Unknown error")
+
+def profile_delete_result(request):
+    username = request.user.username
+    try:
+        client_logged_in = client.objects.get(login=username)
+        user_logged_in = User.objects.get(username=username)
+        client_logged_in.delete()
+        user_logged_in.delete()
+        # return redirect(reverse('logout'))
+        return render(request, "electronic_service/user_profile_delete_result.html")
+    except(client.DoesNotExist or User.DoesNotExist):
+        return HttpResponse("Unknown error")
 
 def make_request(request):
     try:
