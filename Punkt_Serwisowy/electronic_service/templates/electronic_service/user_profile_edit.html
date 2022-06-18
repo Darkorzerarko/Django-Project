@@ -10,39 +10,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="top_div">
-        <div class="logo_img">
-            <a href="{% url 'electronic_service:index' %}" title="Main page">
-                <img src="{% static 'resources/logo_white.png' %}">
-            </a>
-            <div style="margin-left: 30px">
-                TrollIT
-            </div>
+<div class="top_div">
+    <div class="logo_img">
+        <a href="{% url 'electronic_service:index' %}" title="Main page">
+            <img src="{% static 'resources/logo_white.png' %}">
+        </a>
+        <div style="margin-left: 30px">
+            TrollIT
         </div>
     </div>
-    <div class="color_scheme_1" style="margin-top: 110px">
-        <div>
-            <strong>{{user_client.name}} {{user_client.surname}} account edit page</strong>
-        </div>
-        <form action="{% url 'electronic_service:profile_edit_result' %}" method="post" >
+</div>
+<div class="color_scheme_1" style="margin-top: calc(50px + 9vh)">
+    <div>
+        <strong>{{user_client.name}} {{user_client.surname}} account edit page</strong>
+    </div>
+    <form action="{% url 'electronic_service:profile_edit_result' %}" method="post">
         {% csrf_token %}
         <fieldset>
             {% if error_message %}<p>{{ error_message }}</p>{% endif %}
-                <div class="user_data_row">Name:</div>
-                <input type="text" name="F_name" placeholder="Name" required value={{ user_client.name }}><br>
-                <div class="user_data_row">Surname:</div>
-                <input type="text" name="F_surname" placeholder="Surname" required value={{ user_client.surname }}><br>
-                <div class="user_data_row">Login:</div>
-                <input type="text" name="F_login" placeholder="Login" required value={{ user_client.login }}><br>
-                <div class="user_data_row">E-mail:</div>
-                <input type="text" name="F_email" placeholder="E-mail" required value={{ user_client.email }}><br>
-                <div class="user_data_row">Phone number:</div>
-                <input type="text" name="F_phone_number" placeholder="Your phone number" required value={{ user_client.phone_number }}><br>
+            <div class="user_data_row">Name:</div>
+            <input type="text" name="F_name" placeholder="Name" required value={{ user_client.name }}><br>
+            <div class="user_data_row">Surname:</div>
+            <input type="text" name="F_surname" placeholder="Surname" required value={{ user_client.surname }}><br>
+            <div class="user_data_row">Login:</div>
+            <input type="text" name="F_login" placeholder="Login" required value={{ user_client.login }}><br>
+            <div class="user_data_row">E-mail:</div>
+            <input type="text" name="F_email" placeholder="E-mail" required value={{ user_client.email }}><br>
+            <div class="user_data_row">Phone number:</div>
+            <input type="text" name="F_phone_number" placeholder="Your phone number" required value={{
+                   user_client.phone_number }}><br>
         </fieldset>
         <input type="submit" value="Save changes" style="font-size: 32px">
-<!--        <input type="submit" value="Cancel edit" style="font-size: 32px">-->
-        </form>
-    </div>
-
+        <!--        <input type="submit" value="Cancel edit" style="font-size: 32px">-->
+    </form>
+</div>
+<footer>
+    Made by Dariusz Rzeźnik 2022<br>
+</footer>
 </body>
 </html>

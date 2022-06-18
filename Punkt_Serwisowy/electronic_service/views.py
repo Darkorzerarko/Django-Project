@@ -38,7 +38,7 @@ def profile(request):
         s_r_h_l = hardware.objects.all()
 
     except(client.DoesNotExist):
-        return HttpResponse("You are not client / unknown error")
+        return HttpResponse("Employee page edit")
     else:
         return render(request, 'electronic_service/user_profile.html',
                       {'user_client': user_logged_in, 'service_request_list': s_r_l,
@@ -46,14 +46,14 @@ def profile(request):
 
 
 def profile_edit(request):
+    username = request.user.username
     try:
         user_logged_in = client.objects.get(login=username)
+        return render(request, 'electronic_service/user_profile_edit.html', {'user_client': user_logged_in})
     except(client.DoesNotExist):
-        pass
+        return HttpResponse("Employee page edit")
 
-    username = request.user.username
-    user_logged_in = client.objects.get(login=username)
-    return render(request, 'electronic_service/user_profile_edit.html', {'user_client': user_logged_in})
+
 
 
 def profile_edit_result(request):

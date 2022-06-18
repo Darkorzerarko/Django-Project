@@ -17,6 +17,14 @@ body{
     min-width: 500px;
 }
 
+footer{
+    padding: 4px;
+    color: white;
+    background-color: rgb(25, 27, 179);
+    display: flex;
+    justify-content: center;
+}
+
 .top_div{
     display: flex;
     align-items: center;

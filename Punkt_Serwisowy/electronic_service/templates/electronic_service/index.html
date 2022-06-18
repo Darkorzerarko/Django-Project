@@ -73,20 +73,28 @@
 
 <div class="color_scheme_1">
 
-    <button onclick="darkModeToggle()">Dark mode</button><br>
+<!--    <button onclick="darkModeToggle()">Dark mode</button><br>-->
 
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed tortor commodo, accumsan eros et, euismod odio.
-    Sed sed hendrerit velit, ut ultrices elit. Cras arcu eros, ornare ut convallis in, rhoncus sed libero. Cras
-    scelerisque nunc ac nisi porttitor blandit. Donec dictum sodales viverra. Sed lacinia nibh non urna aliquam pretium.
-    Praesent rutrum metus eros, vitae iaculis massa pellentesque eget. Sed ultricies leo id nisl fringilla, ac
-    vestibulum sem dignissim. Duis non bibendum urna.
+    How does it work?<br>
+    <ol style="font-size: calc(15px + 1vh)">
+        <li><strong>Registration</strong><br>First create an account, then make a request where you will add all your faulty devices</li>
+        <li><strong>Delivery of the device</strong><br>After making request you will recive e-mail from our delivery partner with all information about sending us your devices</li>
+        <li><strong>Diagnosis</strong><br>After a precise diagnosis of the device, we contact you to provide detailed information about the repair process and present a cost estimate.</li>
+        <li><strong>Devices repair</strong><br>After accepting the costs, we proceed to repair. The device is then tested again. A fully functional device is ready for courier shipment to the address provided in the service request.</li>
+    </ol>
+
 
 </div>
-<div class="color_scheme_1">
+<div class="color_scheme_1" style="display: flex; justify-content: center">
     <div>
         <a href="{% url 'electronic_service:make_request' %}" style="color: white; background-color: rgb(25, 27, 179); padding: 3px">Make a request</a>
     </div>
 </div>
+
+<footer>
+    Made by Dariusz Rzeźnik 2022<br>
+</footer>
+
 <script>
         function darkModeToggle() {
             const collection = document.getElementsByClassName("color_scheme_1");
