@@ -9,6 +9,7 @@ class employee(models.Model):
     name = models.CharField(max_length=32)
     surname = models.CharField(max_length=32)
     login = models.CharField(max_length=64, unique=True, default="")
+    email = models.EmailField(unique=True, blank=False, default="")
     ZIP_code = models.CharField(max_length=7)
     city = models.CharField(max_length=32)
     street_number = models.CharField(max_length=64)
@@ -71,6 +72,10 @@ class hardware(models.Model):
     def get_brand(self):
         return self.brand
 
+    def get_all_info(self):
+        return str(
+            str(self.brand) + " " + str(self.model) + " s/n:" + str(self.serial_number)
+        )
 
 class repair_part(models.Model):
     brand = models.CharField(max_length=32)

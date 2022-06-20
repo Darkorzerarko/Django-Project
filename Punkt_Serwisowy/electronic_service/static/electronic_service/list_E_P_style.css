@@ -1,0 +1,112 @@
+html {
+    font-family: 'Roboto Mono', monospace;
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: white;
+    background-image: url(../resources/background2.png);
+    margin: 0 0 0 0;
+    min-height: 500px;
+    min-width: 500px;
+}
+
+footer{
+    padding: 4px;
+    color: white;
+    background-color: rgb(25, 27, 179);
+    display: flex;
+    justify-content: center;
+}
+
+.top_div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+
+    height: 10%;
+    background: rgb(25, 27, 179);
+
+    width: 100%;
+    padding: 0 10% 0 10%;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: calc(12px + 1vh);
+    color:white;
+    z-index: 99;
+}
+.top_div a{
+    color: white;
+}
+.user_info_col{
+    padding-left: 10px;
+    float: right;
+    margin-right: 20%;
+
+}
+.logo_img{
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
+.logo_img img{
+    height: calc(10px + 8vh);
+}
+
+.color_scheme_1 {
+    background-color: rgb(255, 255, 255, 0.9);
+    width: 60%;
+    font-size: calc(25px + 1vh);
+    color: rgb(25, 27, 179);;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 10px 30px 10px 30px;
+}
+
+.color_scheme_1 img{
+    width: calc(200px + 8vh);
+    height: calc(200px + 8vh);
+
+}
+
+.color_scheme_1 a{
+    color: rgb(25, 27, 179);
+}
+
+.data_div{
+    padding: 5px;
+    font-size: calc(18px + 1vh)
+}
+
+
+.employee_data_row{
+    width: calc(200px + 8vh);;
+    margin: 10px;
+    font-size: calc(18px + 1vh);
+
+}
+
+
+/*Dark mode CSS*/
+.dark-mode_top_div{
+    background-color: rgb(12, 9, 103);
+}
+.dark-mode_body{
+    background-color: black;
+}
+.dark-mode_footer{
+    background-color: rgb(12, 9, 103);
+}

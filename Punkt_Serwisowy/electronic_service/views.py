@@ -39,7 +39,7 @@ def profile(request):
         s_r_h_l = hardware.objects.all()
 
     except(client.DoesNotExist):
-        return HttpResponse("Employee page edit")
+        return HttpResponse("Unknown Error ¯\_( ͡° ͜ʖ ͡°)_/¯")
     else:
         return render(request, 'electronic_service/user_profile.html',
                       {'user_client': user_logged_in, 'service_request_list': s_r_l,
@@ -55,10 +55,8 @@ def profile_edit(request):
         return HttpResponse("Employee page edit")
 
 
-
-
 def profile_edit_result(request):
-    client_list = get_list_or_404(client)
+    client_list = client.objects.all()
     new_login = request.POST["F_login"]
     curent_user = request.user
     curent_client = client.objects.get(login=curent_user.username)
@@ -106,7 +104,6 @@ def profile_delete_result(request):
         user_logged_in = User.objects.get(username=username)
         client_logged_in.delete()
         user_logged_in.delete()
-        # return redirect(reverse('logout'))
         return render(request, "electronic_service/user_profile_delete_result.html")
     except(client.DoesNotExist or User.DoesNotExist):
         return HttpResponse("Unknown error")
@@ -153,10 +150,82 @@ def add_request_hardware(request, request_id):
     elif 'That is all' in request.POST:
         return redirect(reverse('electronic_service:profile'))
     else:
-        return HttpResponse("SOMETHING WENT WRONG KEK")
+        return HttpResponse("Unknown Error ¯\_( ͡° ͜ʖ ͡°)_/¯")
 
 
+def client_list_E_P(request):
+    client_list = client.objects.all()
+    return render(request, 'electronic_service/client_list_E_P.html', {'client_list': client_list})
 
-# def employee(request):
-#     # return render(request, 'electronic_service/employee_main_page.html')
-#     return render(request, 'electronic_service/employee_main_page.html')
+
+def hardware_list_E_P(request):
+    hardware_list = hardware.objects.all()
+    return render(request, 'electronic_service/hardware_list_E_P.html', {'hardware_list': hardware_list})
+
+def hardware_fault_list_E_P(request):
+    hardware_list = hardware_fault.objects.all()
+    return render(request, 'electronic_service/hardware_fault_list_E_P.html', {'hardware_list': hardware_list})
+
+def request_list_E_P(request):
+    request_list = service_request.objects.all()
+    return render(request, 'electronic_service/service_request_list_E_P.html', {'request_list': request_list})
+
+def spare_parts_list_E_P(request):
+    spare_parts_list = repair_part.objects.all()
+    return render(request, 'electronic_service/spare_parts_list_E_P.html', {"spare_parts_list": spare_parts_list})
+
+
+def profile_E_P(request):
+    username = request.user.username
+    try:
+        user_logged_in = employee.objects.get(login=username)
+    #     Specialization information needs to be added
+
+    except(employee.DoesNotExist):
+        return HttpResponse("Unknown Error ¯\_( ͡° ͜ʖ ͡°)_/¯")
+    else:
+        return render(request, 'electronic_service/employee_profile.html',
+                      {'user_employee': user_logged_in})
+
+
+def profile_edit_E_P(request):
+    username = request.user.username
+    try:
+        user_logged_in = employee.objects.get(login=username)
+        return render(request, 'electronic_service/employyee_profile_edit.html', {'user_employee': user_logged_in})
+    except(employee.DoesNotExist):
+        return HttpResponse("Unknown Error ¯\_( ͡° ͜ʖ ͡°)_/¯")
+
+
+def profile_edit_result_E_P(request):
+    client_list = employee.objects.all()
+    new_login = request.POST["F_login"]
+    curent_user = request.user
+    curent_employee = employee.objects.get(login=curent_user.username)
+
+    var = False
+
+    for c in client_list:
+        if c.login == new_login and new_login != curent_user.username:
+            var = True
+
+    if not var:
+        curent_employee.name = request.POST['F_name']
+        curent_employee.surname = request.POST['F_surname']
+        curent_employee.login = request.POST['F_login']
+        curent_employee.email = request.POST['F_email']
+        curent_employee.phone_number = request.POST['F_phone_number']
+        curent_employee.save()
+
+        curent_user.username = request.POST['F_login']
+        curent_user.email = request.POST['F_email']
+        curent_user.first_name = request.POST['F_name']
+        curent_user.last_name = request.POST['F_surname']
+        curent_user.save()
+
+        return redirect(reverse('electronic_service:employee_profile'))
+    else:
+        return render(request, 'electronic_service/employee_profile_edit.html', {
+            'error_message': "Login is in use, try something different!",
+            'user_client': curent_employee,
+        })

@@ -2,9 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{user.username}} profile</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'electronic_service/user_profile_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="top_div">
+        <div class="logo_img">
+            <a href="{% url 'electronic_service:index' %}" title="Main page">
+                <img src="{% static 'resources/logo_white.png' %}">
+            </a>
+            <div style="margin-left: 30px">
+                TrollIT
+            </div>
+        </div>
+    </div>
+    <div class="color_scheme_1" style="margin-top: calc(50px + 9vh)">
+        <div>
+            <strong>{{user_employee.name}} {{user_employee.surname}} account:</strong>
+        </div>
+        <div class="user_data_row">
+            <div class="data_column">
+                Name:
+            </div>
+            <div>
+                {{ user_employee.name }}
+            </div>
+        </div>
+        <div class="user_data_row">
+            <div class="data_column">
+                Surname:
+            </div>
+            <div>
+                {{ user_employee.surname }}
+            </div>
+        </div>
+        <div class="user_data_row">
+            <div class="data_column">
+                Login:
+            </div>
+            <div>
+                {{ user_employee.login }}
+            </div>
+        </div>
+        <div class="user_data_row">
+            <div class="data_column">
+                E-mail:
+            </div>
+            <div>
+                {{ user_employee.email }}
+            </div>
+        </div>
+        <div class="user_data_row">
+            <div class="data_column">
+                Phone number:
+            </div>
+            <div>
+                {{ user_employee.phone_number }}
+            </div>
+        </div>
+        <div style="font-size: 30px; display: flex; justify-content: center; flex-wrap: wrap">
+            <a href="{% url 'electronic_service:employee_profile_edit' %}" style="color: white;
+            background-color: rgb(25, 27, 179); padding: 5px; margin: 5px 5px 5px 5px">Edit your profile</a>
+            <a href="{% url 'password_reset' %}" style="color: white;
+            background-color: rgb(25, 27, 179); padding: 5px; margin: 5px 5px 5px 5px">Change your password</a>
+        </div>
+    </div>
 
+    <div class="color_scheme_1">
+        <div style="display: flex; justify-content: center; justify-content: space-between; margin: 5px 5px 5px 5px">
+            Your specializations:
+        </div>
+            WORK IN PROGRESS
+    </div>
+<footer>
+    Made by Dariusz Rzeźnik 2022<br>
+</footer>
 </body>
 </html>

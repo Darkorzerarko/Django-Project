@@ -31,25 +31,23 @@
 
 <div class="color_scheme_1" style="margin-top: calc(50px + 9vh);">
     <div class="employee_data_row">
-        <a href=""><img src="{% static 'resources/client_icon.png' %}"><br>See all clients</a>
+        <a href="{% url 'electronic_service:client_list' %}"><img src="{% static 'resources/client_icon.png' %}"><br>See all clients</a>
     </div>
     <div class="employee_data_row">
-        <a href=""><img src="{% static 'resources/request_icon.png' %}"><br>See all service requests</a>
+        <a href="{% url 'electronic_service:service_request_list' %}"><img src="{% static 'resources/request_icon.png' %}"><br>See all service requests</a>
     </div>
     <div class="employee_data_row">
-        <a href=""><img src="{% static 'resources/hardware_icon.png' %}"><br>See all devices</a>
+        <a href="{% url 'electronic_service:hardware_list' %}"><img src="{% static 'resources/hardware_icon.png' %}"><br>See all devices</a>
     </div>
     <div class="employee_data_row">
-        <a href=""><img src="{% static 'resources/broken_hardware_icon.png' %}"><br>See all hardware faults</a>
+        <a href="{% url 'electronic_service:hardware_fault_list' %}"><img src="{% static 'resources/broken_hardware_icon.png' %}"><br>See all hardware faults</a>
     </div>
     <div class="employee_data_row">
-        <a href=""><img src="{% static 'resources/parts_icon.png' %}"><br>See all spare parts</a>
+        <a href="{% url 'electronic_service:spare_parts_list' %}"><img src="{% static 'resources/parts_icon.png' %}"><br>See all spare parts</a>
     </div>
     <div class="employee_data_row">
-        <a href=""><img src="{% static 'resources/employee_icon.png' %}"><br>Edit your account</a>
+        <a href="{% url 'electronic_service:employee_profile' %}"><img src="{% static 'resources/employee_icon.png' %}"><br>See your employee account</a>
     </div>
-
-    <!--    <a>See your specializations</a> ADD THIS TO EMPLOYE PROFILE PANEL-->
 </div>
 <footer>
     Made by Dariusz Rzeźnik 2022<br>

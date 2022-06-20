@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service request list</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'electronic_service/list_E_P_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="top_div">
+    <div class="logo_img">
+        <a href="{% url 'electronic_service:index' %}" title="Main page">
+            <img src="{% static 'resources/logo_white.png' %}">
+        </a>
+        <div style="margin-left: 30px">
+            TrollIT employee
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="user_info_col">
+        Hi {{ user.username }}!<br>
+        <a href="{% url 'logout' %}">Log Out</a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="color_scheme_1" style="margin-top: calc(50px + 9vh);">
+    {% if request_list %}
+        Current list of service requests:
+        {% for c in request_list %}
+            <li class="data_div">
+                {{c}}
+            </li>
+        {% endfor %}
+    {% else %}
+        There are no service requests in database!
+    {% endif %}
+</div>
+</body>
+</html>

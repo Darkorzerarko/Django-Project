@@ -22,25 +22,25 @@
 </div>
 <div class="color_scheme_1" style="margin-top: calc(50px + 9vh)">
     <div>
-        <strong>{{user_client.name}} {{user_client.surname}} account edit page</strong>
+        <strong>{{user_employee.name}} {{user_employee.surname}} account edit page</strong>
     </div>
-    <form action="{% url 'electronic_service:profile_edit_result' %}" method="post">
+    <form action="{% url 'electronic_service:employee_profile_edit_result' %}" method="post">
         {% csrf_token %}
         <fieldset>
             {% if error_message %}<p>{{ error_message }}</p>{% endif %}
             <div class="user_data_row">Name:</div>
-            <input type="text" name="F_name" placeholder="Name" required value={{ user_client.name }}><br>
+            <input type="text" name="F_name" placeholder="Name" required value={{ user_employee.name }}><br>
             <div class="user_data_row">Surname:</div>
-            <input type="text" name="F_surname" placeholder="Surname" required value={{ user_client.surname }}><br>
+            <input type="text" name="F_surname" placeholder="Surname" required value={{ user_employee.surname }}><br>
             <div class="user_data_row">Login:</div>
-            <input type="text" name="F_login" placeholder="Login" required value={{ user_client.login }}><br>
+            <input type="text" name="F_login" placeholder="Login" required value={{ user_employee.login }}><br>
             <div class="user_data_row">E-mail:</div>
-            <input type="text" name="F_email" placeholder="E-mail" required value={{ user_client.email }}><br>
+            <input type="text" name="F_email" placeholder="E-mail" required value={{ user_employee.email }}><br>
             <div class="user_data_row">Phone number:</div>
-            <input type="text" name="F_phone_number" placeholder="Your phone number" required value={{ user_client.phone_number }}><br>
+            <input type="text" name="F_phone_number" placeholder="Your phone number" required value={{ user_employee.phone_number }}><br>
         </fieldset>
         <input type="submit" value="Save changes" style="font-size: 32px">
-        <!--        <input type="submit" value="Cancel edit" style="font-size: 32px">-->
+
     </form>
 </div>
 <footer>

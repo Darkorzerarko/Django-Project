@@ -14,6 +14,13 @@ urlpatterns = [
     path('request_service/result', views.make_request_result, name='make_request_result'),
     path('request_service/add_hardware_to_<int:request_id>', views.add_request_hardware, name='add_request_hardware'),
 
-    # path('employee/', views.employee, name='employee_m_p'),
+    path('employee/client_list', views.client_list_E_P, name='client_list'),
+    path('employee/hardware_list', views.hardware_list_E_P, name='hardware_list'),
+    path('employee/hardware_fault_list', views.hardware_fault_list_E_P, name='hardware_fault_list'),
+    path('employee/service_request_list', views.request_list_E_P, name='service_request_list'),
+    path('employee/spare_parts_list', views.spare_parts_list_E_P, name='spare_parts_list'),
+    path('employee/profile', views.profile_E_P, name='employee_profile'),
+    path('employee/profile/edit', views.profile_edit_E_P, name='employee_profile_edit'),
+    path('employee/profile/edit/result', views.profile_edit_result_E_P, name='employee_profile_edit_result'),
 
 ]
