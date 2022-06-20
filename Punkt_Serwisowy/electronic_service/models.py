@@ -14,6 +14,11 @@ class employee(models.Model):
     street_number = models.CharField(max_length=64)
     phone_number = models.CharField(max_length=23, unique=True)
 
+    def __str__(self):
+        return str(
+            str(self.name) + " " + str(self.surname) + " Tel: " + str(self.phone_number)
+        )
+
 
 class client(models.Model):
     name = models.CharField(max_length=32)
@@ -56,28 +61,55 @@ class hardware(models.Model):
     client_description = models.CharField(max_length=1024)
     warranty = models.BooleanField
 
+    def __str__(self):
+        return str(
+            str(self.brand) + " " + str(self.model)
+        )
+    def get_brand(self):
+        return self.brand
+
 
 class repair_part(models.Model):
     brand = models.CharField(max_length=32)
     producer_num = models.CharField(max_length=64)
     description = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=7, decimal_places=2)
-    stock = models.IntegerField
+    stock = models.IntegerField(null=True)
+
+    def __str__(self):
+        return str(
+            str(self.brand) + " " + str(self.description)
+        )
 
 
 class hardware_fault(models.Model):
     hardware_id = models.ForeignKey(hardware, on_delete=models.CASCADE)
-    repair_part_id = models.ForeignKey(repair_part, on_delete=models.CASCADE, blank=True)
+    repair_part_id = models.ForeignKey(repair_part, on_delete=models.CASCADE, blank=True, null=True)
     employee_id = models.ForeignKey(employee, on_delete=models.CASCADE, blank=True)
     professional_description = models.CharField(max_length=512)
     repair_price = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return str(
+            str(self.hardware_id) + ": " + str(self.professional_description)
+        )
 
 
 class specialization(models.Model):
     name = models.CharField(max_length=64)
     hourly_wage = models.DecimalField(max_digits=5, decimal_places=2)
 
+    def __str__(self):
+        return str(
+            str(self.name) + " " + str(self.hourly_wage)
+        )
+
 
 class employee_specialization(models.Model):
     employee_id = models.ForeignKey(employee, on_delete=models.CASCADE)
     specialization_id = models.ForeignKey(specialization, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(
+            str(self.employee_id) + " " + str(self.specialization_id)
+        )

@@ -79,7 +79,7 @@
             Your repairs
         </div>
 
-        <div>
+        <div style="font-size: calc(15px + 1vh);">
             {% if service_request_list %}
                 {% for s_r in service_request_list %}
                     <li>{{s_r.get_date_to_client |date:"j-n-Y"}}:
@@ -88,6 +88,9 @@
                             {{h.brand}} {{h.model}}
                         {% endif %}
                     {% endfor %}
+                    {% if s_r.date_of_completion %}
+                        Completed, ready to deliver
+                    {% endif %}
                     </li>
                 {% endfor %}
                 <div style="margin-top: 15px; margin-bottom: 5px">
