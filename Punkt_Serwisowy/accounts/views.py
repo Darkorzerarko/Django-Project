@@ -29,12 +29,12 @@ def register_client_result(request):
         for c in client_list:
             if c.login == request.POST['F_login']:
                 var1 = True
-            elif c.email == request.POST['F_email']:
+            if c.email == request.POST['F_email']:
                 var2 = True
-            elif c.phone_number == request.POST['F_phone_number']:
+            if c.phone_number == request.POST['F_phone_number']:
                 var3 = True
-            else:
-                pass
+
+        print(var1, var2, var3)
 
         if not var1 and not var2 and not var3:
 
@@ -76,8 +76,12 @@ def register_client_result(request):
                 })
             else:
                 return render(request, 'registration/signup.html', {
-                    'error_message': "Phone number is in use, please try something else",
+                    'error_message': "Email address is in use, please try something else",
                 })
+        elif var3:
+            return render(request, 'registration/signup.html', {
+                'error_message': "Phone number is in use, please try something else",
+            })
         else:
             return HttpResponse("Unknown Error ¯\_( ͡° ͜ʖ ͡°)_/¯")
     else:
