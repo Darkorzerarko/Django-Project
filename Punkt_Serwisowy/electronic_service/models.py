@@ -36,6 +36,9 @@ class client(models.Model):
     def get_login(self):
         return self.login
 
+    def get_email(self):
+        return self.email
+
 
 
 class service_request(models.Model):
